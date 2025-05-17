@@ -7,7 +7,12 @@
 		{
 			"Name": "LastInBlight",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"GameplayAbilities",
+				"EnhancedInput"
+			]
 		}
 	],
 	"Plugins": [

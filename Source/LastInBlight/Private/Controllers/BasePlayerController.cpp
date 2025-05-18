@@ -24,9 +24,10 @@ void ABasePlayerController::BeginPlay()
     check(BaseContext);
 
     UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-    check(Subsystem);
-    Subsystem->AddMappingContext(BaseContext, 0);
-
+    if (Subsystem)
+    {
+        Subsystem->AddMappingContext(BaseContext, 0);
+    }
     bShowMouseCursor = true;
 
     FInputModeGameAndUI InputModeData;

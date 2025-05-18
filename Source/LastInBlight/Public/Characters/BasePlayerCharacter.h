@@ -18,4 +18,8 @@ class LASTINBLIGHT_API ABasePlayerCharacter : public ABaseCharacter
 public:
 	ABasePlayerCharacter();
 	
+	virtual void PossessedBy(AController* NewController) override;
+
+private:
+	virtual void InitAbilityActorInfo();
 };

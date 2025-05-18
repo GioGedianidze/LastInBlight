@@ -3,7 +3,9 @@
 
 #include "Characters/BasePlayerCharacter.h"
 
+#include "Controllers/BasePlayerController.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "UI/BaseHUD.h"
 
 ABasePlayerCharacter::ABasePlayerCharacter()
 {
@@ -16,4 +18,24 @@ ABasePlayerCharacter::ABasePlayerCharacter()
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
+}
+
+void ABasePlayerCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	InitAbilityActorInfo();
+}
+
+
+void ABasePlayerCharacter::InitAbilityActorInfo()
+{
+	
+	
+	if(ABasePlayerController* BasePlayerController =  Cast<ABasePlayerController> (GetController()))
+	{
+		if(ABaseHUD* BaseHUD =  Cast<ABaseHUD>(BasePlayerController->GetHUD()))
+		{
+			BaseHUD->InitOverlay(BasePlayerController,AbilitySystemComponent,AttributeSet);
+		}
+	}
 }
